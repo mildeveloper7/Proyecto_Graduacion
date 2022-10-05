@@ -32,14 +32,14 @@
 
 		}
 
-		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Especial"){
+		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Fisioterapeuta"){
 
 			echo '<li>
 
-				<a href="empleados">
+				<a href="pacientes">
 
 					<i class="fa fa-users"></i>
-					<span>Empleados</span>
+					<span>Pacientes</span>
 
 				</a>
 
@@ -47,10 +47,10 @@
 
 			<li>
 
-				<a href="#">
+				<a href="citas">
 
 					<i class="fa fa-product-hunt"></i>
-					<span>Vehiculos</span>
+					<span>citas</span>
 
 				</a>
 
@@ -58,11 +58,11 @@
 
 		}
 
-		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Vendedor"){
+		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Fisioterapeuta"){
 
 			echo '<li>
 
-				<a href="clientes">
+				<a href="pacientes">
 
 					<i class="fa fa-users"></i>
 					<span>Pacientes</span>
@@ -73,7 +73,7 @@
 
 		}
 
-		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Vendedor"){
+		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Fisioterapeuta"){
 
 			echo '<li class="treeview">
 

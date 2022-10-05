@@ -4,7 +4,7 @@
     
     <h1>
       
-      Administrar Pacientes
+      Administrar usuarios
     
     </h1>
 
@@ -12,7 +12,7 @@
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar pacientes</li>
+      <li class="active">Administrar usuarios</li>
     
     </ol>
 
@@ -26,7 +26,7 @@
   
         <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarUsuario">
           
-          Agregar paciente
+          Agregar usuario
 
         </button>
 
@@ -41,12 +41,12 @@
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Nombres</th>
-           <th>Apellidos</th>
-           <th>Telefono</th>
-           <th>Direccion</th>
-           <th>Correo</th>
-           <th>Edad</th>
+           <th>Nombre</th>
+           <th>Usuario</th>
+           <th>Foto</th>
+           <th>Perfil</th>
+           <th>Estado</th>
+           <th>Último login</th>
            <th>Acciones</th>
 
          </tr> 
@@ -221,9 +221,9 @@ MODAL AGREGAR USUARIO
 
                   <option value="Administrador">Administrador</option>
 
-                  <option value="Secretaria">Secretaria</option>
+                  <option value="Especial">Especial</option>
 
-                  <option value="Fisioterapeuta">Fisioterapeuta</option>
+                  <option value="Vendedor">Vendedor</option>
 
                 </select>
 

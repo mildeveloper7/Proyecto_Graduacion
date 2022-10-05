@@ -1,22 +1,22 @@
 <?php
 
-class ControladorEmpleados{
+class ControladorPacientes{
 
 	/*=============================================
 	CREAR CATEGORIAS
 	=============================================*/
 
-	static public function ctrEmpleado(){
+	static public function ctrPaciente(){
 
-		if(isset($_POST["nuevoEmpleado"])){
+		if(isset($_POST["nuevoPaciente"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoEmpleado"])){
+			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoPaciente"])){
 
-				$tabla = "empledos";
+				$tabla = "pacientes";
 
-				$datos = $_POST["nuevoEmpleado"];
+				$datos = $_POST["nuevopPaciente"];
 
-				$respuesta = ModeloEmpleados::mdlIngresarEmpleado($tabla, $datos);
+				$respuesta = ModeloPacientes::mdlIngresarPaciente($tabla, $datos);
 
 				if($respuesta == "ok"){
 
@@ -24,13 +24,13 @@ class ControladorEmpleados{
 
 					swal({
 						  type: "success",
-						  title: "El empleado ha sido guardado correctamente",
+						  title: "El paciente ha sido guardado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "empleados";
+									window.location = "pacientes";
 
 									}
 								})
@@ -46,13 +46,13 @@ class ControladorEmpleados{
 
 					swal({
 						  type: "error",
-						  title: "¡Los datos del empleado no pueden ir vacios!",
+						  title: "¡Los datos del paciente no pueden ir vacios!",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 							if (result.value) {
 
-							window.location = "empleados";
+							window.location = "pacientes";
 
 							}
 						})
@@ -69,9 +69,9 @@ class ControladorEmpleados{
 	MOSTRAR CATEGORIAS
 	=============================================*/
 
-	static public function ctrMostrarEmpleados($item, $valor){
+	static public function ctrMostrarPacientes($item, $valor){
 
-		$tabla = "empleados";
+		$tabla = "pacientes";
 
 		$respuesta = ModeloEmpleados::mdlMostrarEmpleados($tabla, $item, $valor);
 
@@ -83,18 +83,18 @@ class ControladorEmpleados{
 	EDITAR CATEGORIA
 	=============================================*/
 
-	static public function ctrEditarEmpleado(){
+	static public function ctrEditarPaciente(){
 
-		if(isset($_POST["editarEmpleado"])){
+		if(isset($_POST["editarPaciente"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarEmpleado"])){
+			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarPaciente"])){
 
-				$tabla = "empleados";
+				$tabla = "pacientes";
 
-				$datos = array("empleado"=>$_POST["editarEmpleado"],
-							   "id"=>$_POST["cod_empleado"]);
+				$datos = array("paciente"=>$_POST["editarPaciente"],
+							   "id"=>$_POST["id_paciente"]);
 
-				$respuesta = ModeloEmpleados::mdlEditarEmpleado($tabla, $datos);
+				$respuesta = ModeloPacientes::mdlEditarPaciente($tabla, $datos);
 
 				if($respuesta == "ok"){
 
@@ -102,13 +102,13 @@ class ControladorEmpleados{
 
 					swal({
 						  type: "success",
-						  title: "El empleado ha sido editado correctamente",
+						  title: "El paciente ha sido editado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "empleados";
+									window.location = "pacientes";
 
 									}
 								})
@@ -124,13 +124,13 @@ class ControladorEmpleados{
 
 					swal({
 						  type: "error",
-						  title: "¡El empleado no puede ir vacío o llevar caracteres especiales!",
+						  title: "¡El paciente no puede ir vacío o llevar caracteres especiales!",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 							if (result.value) {
 
-							window.location = "empleados";
+							window.location = "pacientes";
 
 							}
 						})
@@ -147,14 +147,14 @@ class ControladorEmpleados{
 	BORRAR CATEGORIA
 	=============================================*/
 
-	static public function ctrBorrarEmpleado(){
+	static public function ctrBorrarPaciente(){
 
-		if(isset($_GET["cod_empleado"])){
+		if(isset($_GET["id_paciente"])){
 
-			$tabla ="empleados";
-			$datos = $_GET["cod_empleado"];
+			$tabla ="pacientes";
+			$datos = $_GET["id_paciente"];
 
-			$respuesta = ModeloCategorias::mdlBorrarCategoria($tabla, $datos);
+			$respuesta = ModeloPacientes::mdlBorrarPaciente($tabla, $datos);
 
 			if($respuesta == "ok"){
 
@@ -162,13 +162,13 @@ class ControladorEmpleados{
 
 					swal({
 						  type: "success",
-						  title: "La categoría ha sido borrada correctamente",
+						  title: "El paciente ha sido borrado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "categorias";
+									window.location = "pacientes";
 
 									}
 								})
