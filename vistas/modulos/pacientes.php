@@ -79,9 +79,9 @@ if($_SESSION["perfil"] == "Especial"){
           $item = null;
           $valor = null;
 
-          $Pacientess = ControladorPacientess::ctrMostrarPacientess($item, $valor);
+          $Pacientes = ControladorPacientes::ctrMostrarPacientes($item, $valor);
 
-          foreach ($Pacientess as $key => $value) {
+          foreach ($Pacientes as $key => $value) {
             
 
             echo '<tr>
@@ -276,7 +276,7 @@ MODAL AGREGAR Pacientes
 
       <?php
 
-        $crearPacientes = new ControladorPacientess();
+        $crearPacientes = new ControladorPacientes();
         $crearPacientes -> ctrCrearPacientes();
 
       ?>
@@ -423,7 +423,7 @@ MODAL EDITAR Pacientes
 
       <?php
 
-        $editarPacientes = new ControladorPacientess();
+        $editarPacientes = new ControladorPacientes();
         $editarPacientes -> ctrEditarPacientes();
 
       ?>
@@ -438,7 +438,7 @@ MODAL EDITAR Pacientes
 
 <?php
 
-  $eliminarPacientes = new ControladorPacientess();
+  $eliminarPacientes = new ControladorPacientes();
   $eliminarPacientes -> ctrEliminarPacientes();
 
 ?>
