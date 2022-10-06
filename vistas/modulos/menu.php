@@ -28,16 +28,7 @@
 
 				</a>
 
-</li>
-	<li>
-	<a href="usuarios">
-
-					<i class="fa fa-users"></i>
-					<span>Pacientes</span>
-
-				</a>
-
-			</li>';
+</li>';
 
 		}
 
@@ -57,13 +48,23 @@
 			<li>
 
 				<a href="citas">
-
-					<i class="fa fa-product-hunt"></i>
+				<i class="fa fa-calendar"></i>
 					<span>citas</span>
 
 				</a>
 
-			</li>';
+			</li>
+			<li>
+
+				<a href="examenes">
+				<i class="fa fa-list-ul"></i>
+					<span>Examenes</span>
+
+				</a>
+
+			</li>
+
+			';
 
 		}
 
@@ -73,12 +74,26 @@
 
 				<a href="pacientes">
 
-					<i class="fa fa-users"></i>
-					<span>Pacientes</span>
+					<i class="fa fa-shoe"></i>
+					<span>Avances</span>
 
 				</a>
 
-			</li>';
+			</li>
+
+
+			<li>
+
+				<a href="pacientes">
+
+					<i class="fa fa-money"></i>
+					<span>Finanzas</span>
+
+				</a>
+
+			</li>
+
+			';
 
 		}
 
