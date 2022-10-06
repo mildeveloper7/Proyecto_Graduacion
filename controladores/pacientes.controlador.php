@@ -73,7 +73,7 @@ class ControladorPacientes{
 
 		$tabla = "pacientes";
 
-		$respuesta = ModeloEmpleados::mdlMostrarEmpleados($tabla, $item, $valor);
+		$respuesta = ModeloPacientes::mdlMostrarPacientes($tabla, $item, $valor);
 
 		return $respuesta;
 	

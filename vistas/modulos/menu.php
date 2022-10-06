@@ -28,6 +28,15 @@
 
 				</a>
 
+</li>
+	<li>
+	<a href="usuarios">
+
+					<i class="fa fa-users"></i>
+					<span>Pacientes</span>
+
+				</a>
+
 			</li>';
 
 		}

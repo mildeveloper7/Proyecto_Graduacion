@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["perfil"] == "Fisioterapeuta" || $_SESSION["perfil"] == "Secretaria"){
+if($_SESSION["perfil"] == "Fisioterapeuta" || $_SESSION["perfil"] == "Administrador"){
 
   echo '<script>
 
@@ -157,7 +157,7 @@ MODAL AGREGAR USUARIO
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Agregar usuario</h4>
+          <h4 class="modal-title">Agregar paciente</h4>
 
         </div>
 
@@ -267,8 +267,8 @@ MODAL AGREGAR USUARIO
 
         <?php
 
-          $crearUsuario = new ControladorUsuarios();
-          $crearUsuario -> ctrCrearUsuario();
+          $crearPaciente = new ControladorPacientes();
+          $crearPaciente -> ctrCrearPaciente();
 
         ?>
 
@@ -284,7 +284,7 @@ MODAL AGREGAR USUARIO
 MODAL EDITAR USUARIO
 ======================================-->
 
-<div id="modalEditarUsuario" class="modal fade" role="dialog">
+<div id="modalEditarPaciente" class="modal fade" role="dialog">
   
   <div class="modal-dialog">
 
@@ -300,7 +300,7 @@ MODAL EDITAR USUARIO
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Editar usuario</h4>
+          <h4 class="modal-title">Editar paciente</h4>
 
         </div>
 
@@ -334,7 +334,7 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                <input type="text" class="form-control input-lg" id="editarUsuario" name="editarUsuario" value="" readonly>
+                <input type="text" class="form-control input-lg" id="editarPaciente" name="editarUsuario" value="" readonly>
 
               </div>
 
@@ -408,14 +408,14 @@ MODAL EDITAR USUARIO
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary">Modificar usuario</button>
+          <button type="submit" class="btn btn-primary">Modificar paciente</button>
 
         </div>
 
      <?php
 
-          $editarUsuario = new ControladorUsuarios();
-          $editarUsuario -> ctrEditarUsuario();
+          $editarUsuario = new ControladorPacientes();
+          $editarUsuario -> ctrEditarPaciente();
 
         ?> 
 
@@ -429,8 +429,8 @@ MODAL EDITAR USUARIO
 
 <?php
 
-  $borrarUsuario = new ControladorUsuarios();
-  $borrarUsuario -> ctrBorrarUsuario();
+  $borrarUsuario = new ControladorPacientes();
+  $borrarUsuario -> ctrBorrarPaciente();
 
 ?> 
 
