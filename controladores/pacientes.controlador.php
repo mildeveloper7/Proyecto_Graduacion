@@ -3,34 +3,43 @@
 class ControladorPacientes{
 
 	/*=============================================
-	CREAR CATEGORIAS
+	CREAR Pacientes
 	=============================================*/
 
-	static public function ctrPaciente(){
+	static public function ctrCrearPacientes(){
 
-		if(isset($_POST["nuevoPaciente"])){
+		if(isset($_POST["nuevoPacientes"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoPaciente"])){
+			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoPacientes"]) &&
+			   preg_match('/^[0-9]+$/', $_POST["nuevoDocumentoId"]) &&
+			   preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["nuevoEmail"]) && 
+			   preg_match('/^[()\-0-9 ]+$/', $_POST["nuevoTelefono"]) && 
+			   preg_match('/^[#\.\-a-zA-Z0-9 ]+$/', $_POST["nuevaDireccion"])){
 
-				$tabla = "pacientes";
+			   	$tabla = "Pacientes";
 
-				$datos = $_POST["nuevopPaciente"];
+			   	$datos = array("nombre"=>$_POST["nuevoPacientes"],
+					           "documento"=>$_POST["nuevoDocumentoId"],
+					           "email"=>$_POST["nuevoEmail"],
+					           "telefono"=>$_POST["nuevoTelefono"],
+					           "direccion"=>$_POST["nuevaDireccion"],
+					           "fecha_nacimiento"=>$_POST["nuevaFechaNacimiento"]);
 
-				$respuesta = ModeloPacientes::mdlIngresarPaciente($tabla, $datos);
+			   	$respuesta = ModeloPacientes::mdlIngresarPacientes($tabla, $datos);
 
-				if($respuesta == "ok"){
+			   	if($respuesta == "ok"){
 
 					echo'<script>
 
 					swal({
 						  type: "success",
-						  title: "El paciente ha sido guardado correctamente",
+						  title: "El Pacientes ha sido guardado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "pacientes";
+									window.location = "Pacientes";
 
 									}
 								})
@@ -39,25 +48,26 @@ class ControladorPacientes{
 
 				}
 
-
 			}else{
 
 				echo'<script>
 
 					swal({
 						  type: "error",
-						  title: "¡Los datos del paciente no pueden ir vacios!",
+						  title: "¡El Pacientes no puede ir vacío o llevar caracteres especiales!",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 							if (result.value) {
 
-							window.location = "pacientes";
+							window.location = "Pacientes";
 
 							}
 						})
 
 			  	</script>';
+
+
 
 			}
 
@@ -66,49 +76,58 @@ class ControladorPacientes{
 	}
 
 	/*=============================================
-	MOSTRAR CATEGORIAS
+	MOSTRAR Pacientes
 	=============================================*/
 
 	static public function ctrMostrarPacientes($item, $valor){
 
-		$tabla = "pacientes";
+		$tabla = "Pacientes";
 
 		$respuesta = ModeloPacientes::mdlMostrarPacientes($tabla, $item, $valor);
 
 		return $respuesta;
-	
+
 	}
 
 	/*=============================================
-	EDITAR CATEGORIA
+	EDITAR Pacientes
 	=============================================*/
 
-	static public function ctrEditarPaciente(){
+	static public function ctrEditarPacientes(){
 
-		if(isset($_POST["editarPaciente"])){
+		if(isset($_POST["editarPacientes"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarPaciente"])){
+			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarPacientes"]) &&
+			   preg_match('/^[0-9]+$/', $_POST["editarDocumentoId"]) &&
+			   preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["editarEmail"]) && 
+			   preg_match('/^[()\-0-9 ]+$/', $_POST["editarTelefono"]) && 
+			   preg_match('/^[#\.\-a-zA-Z0-9 ]+$/', $_POST["editarDireccion"])){
 
-				$tabla = "pacientes";
+			   	$tabla = "Pacientes";
 
-				$datos = array("paciente"=>$_POST["editarPaciente"],
-							   "id"=>$_POST["id_paciente"]);
+			   	$datos = array("id"=>$_POST["idPacientes"],
+			   				   "nombre"=>$_POST["editarPacientes"],
+					           "documento"=>$_POST["editarDocumentoId"],
+					           "email"=>$_POST["editarEmail"],
+					           "telefono"=>$_POST["editarTelefono"],
+					           "direccion"=>$_POST["editarDireccion"],
+					           "fecha_nacimiento"=>$_POST["editarFechaNacimiento"]);
 
-				$respuesta = ModeloPacientes::mdlEditarPaciente($tabla, $datos);
+			   	$respuesta = ModeloPacientes::mdlEditarPacientes($tabla, $datos);
 
-				if($respuesta == "ok"){
+			   	if($respuesta == "ok"){
 
 					echo'<script>
 
 					swal({
 						  type: "success",
-						  title: "El paciente ha sido editado correctamente",
+						  title: "El Pacientes ha sido cambiado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "pacientes";
+									window.location = "Pacientes";
 
 									}
 								})
@@ -117,25 +136,26 @@ class ControladorPacientes{
 
 				}
 
-
 			}else{
 
 				echo'<script>
 
 					swal({
 						  type: "error",
-						  title: "¡El paciente no puede ir vacío o llevar caracteres especiales!",
+						  title: "¡El Pacientes no puede ir vacío o llevar caracteres especiales!",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 							if (result.value) {
 
-							window.location = "pacientes";
+							window.location = "Pacientes";
 
 							}
 						})
 
 			  	</script>';
+
+
 
 			}
 
@@ -144,38 +164,43 @@ class ControladorPacientes{
 	}
 
 	/*=============================================
-	BORRAR CATEGORIA
+	ELIMINAR Pacientes
 	=============================================*/
 
-	static public function ctrBorrarPaciente(){
+	static public function ctrEliminarPacientes(){
 
-		if(isset($_GET["id_paciente"])){
+		if(isset($_GET["idPacientes"])){
 
-			$tabla ="pacientes";
-			$datos = $_GET["id_paciente"];
+			$tabla ="Pacientes";
+			$datos = $_GET["idPacientes"];
 
-			$respuesta = ModeloPacientes::mdlBorrarPaciente($tabla, $datos);
+			$respuesta = ModeloPacientes::mdlEliminarPacientes($tabla, $datos);
 
 			if($respuesta == "ok"){
 
 				echo'<script>
 
-					swal({
-						  type: "success",
-						  title: "El paciente ha sido borrado correctamente",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-									if (result.value) {
+				swal({
+					  type: "success",
+					  title: "El Pacientes ha sido borrado correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar",
+					  closeOnConfirm: false
+					  }).then(function(result){
+								if (result.value) {
 
-									window.location = "pacientes";
+								window.location = "Pacientes";
 
-									}
-								})
+								}
+							})
 
-					</script>';
-			}
+				</script>';
+
+			}		
+
 		}
-		
+
 	}
+
 }
+

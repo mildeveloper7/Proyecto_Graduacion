@@ -36,7 +36,7 @@
 
 			echo '<li>
 
-				<a href="pacientes">
+				<a href="clientes">
 
 					<i class="fa fa-users"></i>
 					<span>Pacientes</span>
