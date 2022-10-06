@@ -74,7 +74,7 @@
 
 				<a href="pacientes">
 
-					<i class="fa fa-shoe"></i>
+					<i class="fa fa-sky"></i>
 					<span>Avances</span>
 
 				</a>
@@ -84,7 +84,7 @@
 
 			<li>
 
-				<a href="pacientes">
+				<a href="Pacientes">
 
 					<i class="fa fa-money"></i>
 					<span>Finanzas</span>
