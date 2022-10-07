@@ -79,9 +79,9 @@ if($_SESSION["perfil"] == "Especial"){
           $item = null;
           $valor = null;
 
-          $Pacientes = ControladorPacientes::ctrMostrarPacientes($item, $valor);
+          $Pacientess = ControladorPacientes::ctrMostrarPacientes($item, $valor);
 
-          foreach ($Pacientes as $key => $value) {
+          foreach ($Pacientess as $key => $value) {
             
 
             echo '<tr>
