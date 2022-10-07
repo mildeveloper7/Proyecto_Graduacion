@@ -63,10 +63,6 @@ if($_SESSION["perfil"] == "Especial"){
            <th>Teléfono</th>
            <th>Dirección</th>
            <th>Fecha nacimiento</th> 
-           <th>Total compras</th>
-           <th>Última compra</th>
-           <th>Ingreso al sistema</th>
-           <th>Acciones</th>
 
          </tr> 
 
@@ -98,14 +94,7 @@ if($_SESSION["perfil"] == "Especial"){
 
                     <td>'.$value["direccion"].'</td>
 
-                    <td>'.$value["fecha_nacimiento"].'</td>             
-
-                    <td>'.$value["compras"].'</td>
-
-                    <td>'.$value["ultima_compra"].'</td>
-
-                    <td>'.$value["fecha"].'</td>
-
+                    <td>'.$value["fecha_nacimiento"].'</td>      
                     <td>
 
                       <div class="btn-group">
