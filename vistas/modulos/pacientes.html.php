@@ -4,7 +4,7 @@
     
     <h1>
       
-      Administrar usuarios
+      Administrar Pacientes
     
     </h1>
 
@@ -12,7 +12,7 @@
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar usuarios</li>
+      <li class="active">Administrar Pacientess</li>
     
     </ol>
 
@@ -24,9 +24,9 @@
 
       <div class="box-header with-border">
   
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarUsuario">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarPacientes">
           
-          Agregar usuario
+          Agregar Pacientes
 
         </button>
 
@@ -42,11 +42,14 @@
            
            <th style="width:10px">#</th>
            <th>Nombre</th>
-           <th>Usuario</th>
-           <th>Foto</th>
-           <th>Perfil</th>
-           <th>Estado</th>
-           <th>Último login</th>
+           <th>Documento ID</th>
+           <th>Email</th>
+           <th>Teléfono</th>
+           <th>Dirección</th>
+           <th>Fecha nacimiento</th> 
+           <th>Total compras</th>
+           <th>Última compra</th>
+           <th>Ingreso al sistema</th>
            <th>Acciones</th>
 
          </tr> 
@@ -56,13 +59,27 @@
         <tbody>
           
           <tr>
+
             <td>1</td>
-            <td>Usuario Administrador</td>
-            <td>admin</td>
-            <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
-            <td>Administrador</td>
-            <td><button class="btn btn-success btn-xs">Activado</button></td>
+
+            <td>Juan Villegas</td>
+
+            <td>8161123</td>
+
+            <td>juan@hotmail.com</td>
+
+            <td>555 57 67</td>
+
+            <td>calle 27 # 40 - 36</td>
+
+            <td>1982-15-11</td>
+
             <td>2017-12-11 12:05:32</td>
+
+            <td>35</td>
+
+            <td>2017-12-11 12:05:32</td>
+
             <td>
 
               <div class="btn-group">
@@ -77,50 +94,7 @@
 
           </tr>
 
-           <tr>
-            <td>1</td>
-            <td>Usuario Administrador</td>
-            <td>admin</td>
-            <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
-            <td>Administrador</td>
-            <td><button class="btn btn-success btn-xs">Activado</button></td>
-            <td>2017-12-11 12:05:32</td>
-            <td>
-
-              <div class="btn-group">
-                  
-                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-
-                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-
-              </div>  
-
-            </td>
-
-          </tr>
-
-           <tr>
-            <td>1</td>
-            <td>Usuario Administrador</td>
-            <td>admin</td>
-            <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
-            <td>Administrador</td>
-            <td><button class="btn btn-danger btn-xs">Desactivado</button></td>
-            <td>2017-12-11 12:05:32</td>
-            <td>
-
-              <div class="btn-group">
-                  
-                <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-
-                <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-
-              </div>  
-
-            </td>
-
-          </tr>
-
+          
         </tbody>
 
        </table>
@@ -134,16 +108,16 @@
 </div>
 
 <!--=====================================
-MODAL AGREGAR USUARIO
+MODAL AGREGAR Pacientes
 ======================================-->
 
-<div id="modalAgregarUsuario" class="modal fade" role="dialog">
+<div id="modalAgregarPacientes" class="modal fade" role="dialog">
   
   <div class="modal-dialog">
 
     <div class="modal-content">
 
-      <form role="form" method="post" enctype="multipart/form-data">
+      <form role="form" method="post">
 
         <!--=====================================
         CABEZA DEL MODAL
@@ -153,7 +127,7 @@ MODAL AGREGAR USUARIO
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Agregar usuario</h4>
+          <h4 class="modal-title">Agregar Pacientes</h4>
 
         </div>
 
@@ -173,78 +147,82 @@ MODAL AGREGAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" name="nuevoPacientes" placeholder="Ingresar nombre" required>
 
               </div>
 
             </div>
 
-            <!-- ENTRADA PARA EL USUARIO -->
-
-             <div class="form-group">
+            <!-- ENTRADA PARA EL DOCUMENTO ID -->
+            
+            <div class="form-group">
               
               <div class="input-group">
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoUsuario" placeholder="Ingresar usuario" required>
+                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar documento" required>
 
               </div>
 
             </div>
 
-            <!-- ENTRADA PARA LA CONTRASEÑA -->
-
-             <div class="form-group">
-              
-              <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span> 
-
-                <input type="password" class="form-control input-lg" name="nuevoPassword" placeholder="Ingresar contraseña" required>
-
-              </div>
-
-            </div>
-
-            <!-- ENTRADA PARA SELECCIONAR SU PERFIL -->
-
+            <!-- ENTRADA PARA EL EMAIL -->
+            
             <div class="form-group">
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-users"></i></span> 
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span> 
 
-                <select class="form-control input-lg" name="nuevoPerfil">
-                  
-                  <option value="">Selecionar perfil</option>
-
-                  <option value="Administrador">Administrador</option>
-
-                  <option value="Especial">Especial</option>
-
-                  <option value="Vendedor">Vendedor</option>
-
-                </select>
+                <input type="email" class="form-control input-lg" name="nuevoEmail" placeholder="Ingresar email" required>
 
               </div>
 
             </div>
 
-            <!-- ENTRADA PARA SUBIR FOTO -->
-
-             <div class="form-group">
+            <!-- ENTRADA PARA EL TELÉFONO -->
+            
+            <div class="form-group">
               
-              <div class="panel">SUBIR FOTO</div>
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-phone"></i></span> 
 
-              <input type="file" id="nuevaFoto" name="nuevaFoto">
+                <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
 
-              <p class="help-block">Peso máximo de la foto 200 MB</p>
-
-              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="100px">
+              </div>
 
             </div>
 
+            <!-- ENTRADA PARA LA DIRECCIÓN -->
+            
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span> 
+
+                <input type="text" class="form-control input-lg" name="nuevaDireccion" placeholder="Ingresar dirección" required>
+
+              </div>
+
+            </div>
+
+             <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
+            
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+
+                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+
+              </div>
+
+            </div>
+  
           </div>
 
         </div>
@@ -257,7 +235,7 @@ MODAL AGREGAR USUARIO
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary">Guardar usuario</button>
+          <button type="submit" class="btn btn-primary">Guardar Pacientes</button>
 
         </div>
 
