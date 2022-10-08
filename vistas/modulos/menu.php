@@ -84,7 +84,7 @@
 
 			<li>
 
-				<a href="Pacientes">
+				<a href="financiero">
 
 					<i class="fa fa-money"></i>
 					<span>Finanzas</span>

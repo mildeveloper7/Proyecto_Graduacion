@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
+if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Fisioterapeuta"){
 
   echo '<script>
 
@@ -19,7 +19,7 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
     
     <h1>
       
-      Administrar usuarios
+      Administrar citas
     
     </h1>
 
@@ -27,7 +27,7 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar usuarios</li>
+      <li class="active">Administrar citas</li>
     
     </ol>
 
@@ -41,7 +41,7 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
   
         <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarUsuario">
           
-          Agregar usuario
+          Agregar cita
 
         </button>
 
@@ -56,13 +56,12 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Nombre</th>
-           <th>Usuario</th>
-           <th>Foto</th>
-           <th>Perfil</th>
+           <th>Fecha</th>
+           <th>Hora</th>
+           <th>Paciente</th>
+           <th>Fisioterapeuta</th>
            <th>Estado</th>
-           <th>Último login</th>
-           <th>Acciones</th>
+           <th>Observaciones</th>
 
          </tr> 
 

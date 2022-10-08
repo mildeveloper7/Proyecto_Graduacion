@@ -1,6 +1,6 @@
 <?php
 
-class ControladorUsuarios{
+class ControladorCitas{
 
 	/*=============================================
 	INGRESO DE USUARIO
