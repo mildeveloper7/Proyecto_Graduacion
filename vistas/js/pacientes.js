@@ -19,13 +19,13 @@ $(".tablas").on("click", ".btnEditarPacientes", function(){
       dataType:"json",
       success:function(respuesta){
       
-      	   $("#idPacientes").val(respuesta["id"]);
-	       $("#editarPacientes").val(respuesta["nombre"]);
-	       $("#editarDocumentoId").val(respuesta["documento"]);
-	       $("#editarEmail").val(respuesta["email"]);
+      	   $("#id_paciente").val(respuesta["id_paciente"]);
+	       $("#editarNombres").val(respuesta["nombres"]);
+	       $("#editarApellidos").val(respuesta["apellidos"]);	      
 	       $("#editarTelefono").val(respuesta["telefono"]);
 	       $("#editarDireccion").val(respuesta["direccion"]);
-           $("#editarFechaNacimiento").val(respuesta["fecha_nacimiento"]);
+         $("#editarEmail").val(respuesta["correo"]);
+          $("#editarEdad").val(respuesta["edad"]);
 	  }
 
   	})
@@ -40,18 +40,18 @@ $(".tablas").on("click", ".btnEliminarPacientes", function(){
 	var idPacientes = $(this).attr("idPacientes");
 	
 	swal({
-        title: '¿Está seguro de borrar el Pacientes?',
+        title: '¿Está seguro de borrar el Paciente?',
         text: "¡Si no lo está puede cancelar la acción!",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, borrar Pacientes!'
+        confirmButtonText: 'Si, borrar Paciente!'
       }).then(function(result){
         if (result.value) {
           
-            window.location = "index.php?ruta=Pacientess&idPacientes="+idPacientes;
+            window.location = "index.php?ruta=pacientes&id_paciente="+idPacientes;
         }
 
   })

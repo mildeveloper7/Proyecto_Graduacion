@@ -61,13 +61,10 @@ if($_SESSION["perfil"] == "Especial"){
            <th>Apellidos</th>
            <th>Teléfono</th>
            <th>Dirección</th>
-<<<<<<< HEAD
            <th>Correo</th> 
            <th>Edad</th>
            <th>Estado</th>
-=======
-           <th>Fecha nacimiento</th> 
->>>>>>> a07295324b14dd793c94ff7ea34502d2947e2d1a
+
 
          </tr> 
 
@@ -99,14 +96,10 @@ if($_SESSION["perfil"] == "Especial"){
 
                     <td>'.$value["Correo"].'</td>
 
-<<<<<<< HEAD
                     <td>'.$value["Edad"].'</td>             
 
                     <td>'.$value["Estado"].'</td>
 
-=======
-                    <td>'.$value["fecha_nacimiento"].'</td>      
->>>>>>> a07295324b14dd793c94ff7ea34502d2947e2d1a
                     <td>
 
                       <div class="btn-group">
@@ -181,7 +174,7 @@ MODAL AGREGAR Pacientes
               
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoPacientes" placeholder="Ingresar Nombres" required>
+                <input type="text" class="form-control input-lg" name="nuevoNombres" placeholder="Ingresar Nombres" required>
 
               </div>
 
@@ -194,7 +187,7 @@ MODAL AGREGAR Pacientes
               
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoPacientes" placeholder="Ingresar Apellidos" required>
+                <input type="text" class="form-control input-lg" name="nuevoApellidos" placeholder="Ingresar Apellidos" required>
 
               </div>
 
@@ -265,7 +258,7 @@ MODAL AGREGAR Pacientes
               
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoPacientes" placeholder="Ingresar Edad" required>
+                <input type="text" class="form-control input-lg" name="nuevoEdad" placeholder="Ingresar Edad" required>
 
               </div>
 
@@ -303,8 +296,15 @@ MODAL AGREGAR Pacientes
 
 </div>
 
+
+
+
+
+
+
+
 <!--=====================================
-MODAL EDITAR Pacientes
+MODAL EDITAR PACIENTES
 ======================================-->
 
 <div id="modalEditarPacientes" class="modal fade" role="dialog">
@@ -323,7 +323,7 @@ MODAL EDITAR Pacientes
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Editar Pacientes</h4>
+          <h4 class="modal-title">Editar Paciente</h4>
 
         </div>
 
@@ -335,7 +335,7 @@ MODAL EDITAR Pacientes
 
           <div class="box-body">
 
-            <!-- ENTRADA PARA EL NOMBRE -->
+            <!-- ENTRADA PARA LOS NOMBRES -->
             
             <div class="form-group">
               
@@ -343,13 +343,27 @@ MODAL EDITAR Pacientes
               
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="editarPacientes" id="editarPacientes" required>
-                <input type="hidden" id="idPacientes" name="idPacientes">
+                <input type="text" class="form-control input-lg" name="editarNombres" placeholder="Ingresar Nombres" required>
+
               </div>
 
             </div>
 
-            <!-- ENTRADA PARA EL DOCUMENTO ID -->
+          <!-- ENTRADA PARA LOS APELLIDOS -->
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-user"></i></span> 
+
+                <input type="text" class="form-control input-lg" name="editarApellidos" placeholder="Ingresar Apellidos" required>
+
+              </div>
+
+            </div>
+
+
+            <!-- ENTRADA PARA EL DOCUMENTO ID 
             
             <div class="form-group">
               
@@ -357,7 +371,35 @@ MODAL EDITAR Pacientes
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                <input type="number" min="0" class="form-control input-lg" name="editarDocumentoId" id="editarDocumentoId" required>
+                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar documento" required>
+
+              </div>
+
+            </div> -->
+
+            <!-- ENTRADA PARA EL TELÉFONO -->
+            
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-phone"></i></span> 
+
+                <input type="text" class="form-control input-lg" name="editarTelefono" placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
+
+              </div>
+
+            </div>
+
+             <!-- ENTRADA PARA LA DIRECCIÓN -->
+            
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span> 
+
+                <input type="text" class="form-control input-lg" name="editarDireccion" placeholder="Ingresar dirección" required>
 
               </div>
 
@@ -371,53 +413,26 @@ MODAL EDITAR Pacientes
               
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span> 
 
-                <input type="email" class="form-control input-lg" name="editarEmail" id="editarEmail" required>
+                <input type="email" class="form-control input-lg" name="editarEmail" placeholder="Ingresar correo" required>
 
               </div>
 
             </div>
-
-            <!-- ENTRADA PARA EL TELÉFONO -->
+          
+             <!-- ENTRADA PARA EDAD-->
             
             <div class="form-group">
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-phone"></i></span> 
+                <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="editarTelefono" id="editarTelefono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
-
-              </div>
-
-            </div>
-
-            <!-- ENTRADA PARA LA DIRECCIÓN -->
-            
-            <div class="form-group">
-              
-              <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span> 
-
-                <input type="text" class="form-control input-lg" name="editarDireccion" id="editarDireccion"  required>
+                <input type="text" class="form-control input-lg" name="editarEdad" placeholder="Ingresar Edad" required>
 
               </div>
 
             </div>
 
-             <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
-            
-            <div class="form-group">
-              
-              <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
-
-                <input type="text" class="form-control input-lg" name="editarFechaNacimiento" id="editarFechaNacimiento"  data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
-
-              </div>
-
-            </div>
   
           </div>
 
@@ -431,7 +446,7 @@ MODAL EDITAR Pacientes
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
 
         </div>
 
@@ -439,18 +454,17 @@ MODAL EDITAR Pacientes
 
       <?php
 
-        $editarPacientes = new ControladorPacientes();
-        $editarPacientes -> ctrEditarPacientes();
+          $editarPacientes = new ControladorPacientes();
+          $editarPacientes -> ctrEditarPacientes();
 
       ?>
-
-    
 
     </div>
 
   </div>
 
 </div>
+
 
 <?php
 

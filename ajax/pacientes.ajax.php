@@ -6,7 +6,7 @@ require_once "../modelos/pacientes.modelo.php";
 class AjaxPacientes{
 
 	/*=============================================
-	EDITAR Pacientes
+	MOSTRAR PACINETES
 	=============================================*/	
 
 	public $idPacientes;
@@ -26,7 +26,7 @@ class AjaxPacientes{
 }
 
 /*=============================================
-EDITAR Pacientes
+EDITAR PACIENTES
 =============================================*/	
 
 if(isset($_POST["idPacientes"])){

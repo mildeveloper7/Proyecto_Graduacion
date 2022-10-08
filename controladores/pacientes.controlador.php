@@ -8,22 +8,22 @@ class ControladorPacientes{
 
 	static public function ctrCrearPacientes(){
 
-		if(isset($_POST["nuevoPacientes"])){
+		if(isset($_POST["nuevoNombres"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoPacientes"]) &&
-			   preg_match('/^[0-9]+$/', $_POST["nuevoDocumentoId"]) &&
-			   preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["nuevoEmail"]) && 
+			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombres"])  && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoApellidos"]) && 
 			   preg_match('/^[()\-0-9 ]+$/', $_POST["nuevoTelefono"]) && 
-			   preg_match('/^[#\.\-a-zA-Z0-9 ]+$/', $_POST["nuevaDireccion"])){
+			   preg_match('/^[#\.\-a-zA-Z0-9 ]+$/', $_POST["nuevaDireccion"]) && 
+			   preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["nuevoEmail"]) && 
+			   preg_match('/^[0-9]+$/', $_POST["nuevoEdad"])){
 
-			   	$tabla = "Pacientes";
+			   	$tabla = "pacientes";
 
-			   	$datos = array("nombre"=>$_POST["nuevoPacientes"],
-					           "documento"=>$_POST["nuevoDocumentoId"],
-					           "email"=>$_POST["nuevoEmail"],
-					           "telefono"=>$_POST["nuevoTelefono"],
+			   	$datos = array("nombres"=>$_POST["nuevoNombres"],
+					           "apellidos"=>$_POST["nuevoApellidos"],
+					            "telefono"=>$_POST["nuevoTelefono"],
 					           "direccion"=>$_POST["nuevaDireccion"],
-					           "fecha_nacimiento"=>$_POST["nuevaFechaNacimiento"]);
+							   "correo"=>$_POST["nuevoEmail"],
+					           "edad"=>$_POST["nuevoEdad"]);
 
 			   	$respuesta = ModeloPacientes::mdlIngresarPacientes($tabla, $datos);
 
@@ -39,7 +39,7 @@ class ControladorPacientes{
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "Pacientes";
+									window.location = "pacientes";
 
 									}
 								})
@@ -60,7 +60,7 @@ class ControladorPacientes{
 						  }).then(function(result){
 							if (result.value) {
 
-							window.location = "Pacientes";
+							window.location = "pacientes";
 
 							}
 						})
@@ -95,23 +95,22 @@ class ControladorPacientes{
 
 	static public function ctrEditarPacientes(){
 
-		if(isset($_POST["editarPacientes"])){
+		if(isset($_POST["editarNombres"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarPacientes"]) &&
-			   preg_match('/^[0-9]+$/', $_POST["editarDocumentoId"]) &&
-			   preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["editarEmail"]) && 
-			   preg_match('/^[()\-0-9 ]+$/', $_POST["editarTelefono"]) && 
-			   preg_match('/^[#\.\-a-zA-Z0-9 ]+$/', $_POST["editarDireccion"])){
+			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombres"])  && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarApellidos"]) && 
+			preg_match('/^[()\-0-9 ]+$/', $_POST["editarTelefono"]) && 
+			preg_match('/^[#\.\-a-zA-Z0-9 ]+$/', $_POST["editarDireccion"]) && 
+			preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["editarEmail"]) && 
+			preg_match('/^[0-9]+$/', $_POST["editarEdad"])){
 
-			   	$tabla = "Pacientes";
+			   	$tabla = "pacientes";
 
-			   	$datos = array("id"=>$_POST["idPacientes"],
-			   				   "nombre"=>$_POST["editarPacientes"],
-					           "documento"=>$_POST["editarDocumentoId"],
-					           "email"=>$_POST["editarEmail"],
-					           "telefono"=>$_POST["editarTelefono"],
-					           "direccion"=>$_POST["editarDireccion"],
-					           "fecha_nacimiento"=>$_POST["editarFechaNacimiento"]);
+			   	$datos = array("nombres"=>$_POST["editarNombres"],
+								"apellidos"=>$_POST["editarApellidos"],
+								"telefono"=>$_POST["editarTelefono"],
+								"direccion"=>$_POST["editarDireccion"],
+								"correo"=>$_POST["editarEmail"],
+								"edad"=>$_POST["editarEdad"]);
 
 			   	$respuesta = ModeloPacientes::mdlEditarPacientes($tabla, $datos);
 
@@ -121,13 +120,13 @@ class ControladorPacientes{
 
 					swal({
 						  type: "success",
-						  title: "El Pacientes ha sido cambiado correctamente",
+						  title: "El Paciente ha sido cambiado correctamente",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "Pacientes";
+									window.location = "pacientes";
 
 									}
 								})
@@ -142,13 +141,13 @@ class ControladorPacientes{
 
 					swal({
 						  type: "error",
-						  title: "¡El Pacientes no puede ir vacío o llevar caracteres especiales!",
+						  title: "¡El Paciente no puede ir vacío o llevar caracteres especiales!",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){
 							if (result.value) {
 
-							window.location = "Pacientes";
+							window.location = "pacientes";
 
 							}
 						})
@@ -169,10 +168,10 @@ class ControladorPacientes{
 
 	static public function ctrEliminarPacientes(){
 
-		if(isset($_GET["idPacientes"])){
+		if(isset($_GET["id_paciente"])){
 
-			$tabla ="Pacientes";
-			$datos = $_GET["idPacientes"];
+			$tabla ="pacientes";
+			$datos = $_GET["id_paciente"];
 
 			$respuesta = ModeloPacientes::mdlEliminarPacientes($tabla, $datos);
 
@@ -182,14 +181,14 @@ class ControladorPacientes{
 
 				swal({
 					  type: "success",
-					  title: "El Pacientes ha sido borrado correctamente",
+					  title: "El Paciente ha sido borrado correctamente",
 					  showConfirmButton: true,
 					  confirmButtonText: "Cerrar",
 					  closeOnConfirm: false
 					  }).then(function(result){
 								if (result.value) {
 
-								window.location = "Pacientes";
+								window.location = "pacientes";
 
 								}
 							})

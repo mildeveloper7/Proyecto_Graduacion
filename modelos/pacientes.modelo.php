@@ -10,9 +10,9 @@ class ModeloPacientes{
 
 	static public function mdlIngresarPacientes($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombres, apellidos, telefono, direccion, correo, edad, estado) VALUES (:nombres, :apellidos, :direccion, :telefono, :direccion, :correo, :edad, :estado)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombres, apellidos, telefono, direccion, correo, edad) VALUES (:nombres, :apellidos, :telefono, :direccion, :correo, :edad)");
 
-		$stmt->bindParam(":nombres", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":nombres", $datos["nombres"], PDO::PARAM_STR);
 		$stmt->bindParam(":apellidos", $datos["apellidos"], PDO::PARAM_INT);
 		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
 		$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
@@ -72,14 +72,14 @@ class ModeloPacientes{
 
 	static public function mdlEditarPacientes($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, apellidos = :apellidos, email = :email, telefono = :telefono, direccion = :direccion, edad = :edad WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombres = :nombres, apellidos = :apellidos,   direccion = :direccion, telefono = :telefono, correo = :correo,  edad = :edad WHERE id_paciente = :id_paciente");
 
-		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
-		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":id_paciente", $datos["id_paciente"], PDO::PARAM_INT);
+		$stmt->bindParam(":nombres", $datos["nombres"], PDO::PARAM_STR);
 		$stmt->bindParam(":apellidos", $datos["apellidos"], PDO::PARAM_INT);
-		$stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
+		$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);		
 		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
-		$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+		$stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
 		$stmt->bindParam(":edad", $datos["edad"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
@@ -103,9 +103,9 @@ class ModeloPacientes{
 
 	static public function mdlEliminarPacientes($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_paciente = :id_paciente");
 
-		$stmt -> bindParam(":id", $datos, PDO::PARAM_INT);
+		$stmt -> bindParam(":id_paciente", $datos, PDO::PARAM_INT);
 
 		if($stmt -> execute()){
 
@@ -129,10 +129,10 @@ class ModeloPacientes{
 
 	static public function mdlActualizarPacientes($tabla, $item1, $valor1, $valor){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE idpacientes = :idpacientes");
 
 		$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
-		$stmt -> bindParam(":id", $valor, PDO::PARAM_STR);
+		$stmt -> bindParam(":idpacientes", $valor, PDO::PARAM_STR);
 
 		if($stmt -> execute()){
 
