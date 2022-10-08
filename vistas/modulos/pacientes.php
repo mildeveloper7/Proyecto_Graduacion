@@ -57,16 +57,13 @@ if($_SESSION["perfil"] == "Especial"){
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Nombre</th>
-           <th>Documento ID</th>
-           <th>Email</th>
+           <th>Nombres</th>
+           <th>Apellidos</th>
            <th>Teléfono</th>
            <th>Dirección</th>
-           <th>Fecha nacimiento</th> 
-           <th>Total compras</th>
-           <th>Última compra</th>
-           <th>Ingreso al sistema</th>
-           <th>Acciones</th>
+           <th>Correo</th> 
+           <th>Edad</th>
+           <th>Estado</th>
 
          </tr> 
 
@@ -88,33 +85,29 @@ if($_SESSION["perfil"] == "Especial"){
 
                     <td>'.($key+1).'</td>
 
-                    <td>'.$value["nombre"].'</td>
+                    <td>'.$value["Nombres"].'</td>
 
-                    <td>'.$value["documento"].'</td>
+                    <td>'.$value["Apellidos"].'</td>
 
-                    <td>'.$value["email"].'</td>
+                    <td>'.$value["Telefono"].'</td>
 
-                    <td>'.$value["telefono"].'</td>
+                    <td>'.$value["Direccion"].'</td>
 
-                    <td>'.$value["direccion"].'</td>
+                    <td>'.$value["Correo"].'</td>
 
-                    <td>'.$value["fecha_nacimiento"].'</td>             
+                    <td>'.$value["Edad"].'</td>             
 
-                    <td>'.$value["compras"].'</td>
-
-                    <td>'.$value["ultima_compra"].'</td>
-
-                    <td>'.$value["fecha"].'</td>
+                    <td>'.$value["Estado"].'</td>
 
                     <td>
 
                       <div class="btn-group">
                           
-                        <button class="btn btn-warning btnEditarPacientes" data-toggle="modal" data-target="#modalEditarPacientes" idPacientes="'.$value["id"].'"><i class="fa fa-pencil"></i></button>';
+                        <button class="btn btn-warning btnEditarPacientes" data-toggle="modal" data-target="#modalEditarPacientes" idPacientes="'.$value["id_paciente"].'"><i class="fa fa-pencil"></i></button>';
 
-                      if($_SESSION["perfil"] == "Administrador"){
+                      if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Fisioterapeuta"){
 
-                          echo '<button class="btn btn-danger btnEliminarPacientes" idPacientes="'.$value["id"].'"><i class="fa fa-times"></i></button>';
+                          echo '<button class="btn btn-danger btnEliminarPacientes" idPacientes="'.$value["id_paciente"].'"><i class="fa fa-times"></i></button>';
 
                       }
 
@@ -172,7 +165,7 @@ MODAL AGREGAR Pacientes
 
           <div class="box-body">
 
-            <!-- ENTRADA PARA EL NOMBRE -->
+            <!-- ENTRADA PARA LOS NOMBRES -->
             
             <div class="form-group">
               
@@ -180,13 +173,27 @@ MODAL AGREGAR Pacientes
               
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoPacientes" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" name="nuevoPacientes" placeholder="Ingresar Nombres" required>
 
               </div>
 
             </div>
 
-            <!-- ENTRADA PARA EL DOCUMENTO ID -->
+          <!-- ENTRADA PARA LOS APELLIDOS -->
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-user"></i></span> 
+
+                <input type="text" class="form-control input-lg" name="nuevoPacientes" placeholder="Ingresar Apellidos" required>
+
+              </div>
+
+            </div>
+
+
+            <!-- ENTRADA PARA EL DOCUMENTO ID 
             
             <div class="form-group">
               
@@ -198,21 +205,7 @@ MODAL AGREGAR Pacientes
 
               </div>
 
-            </div>
-
-            <!-- ENTRADA PARA EL EMAIL -->
-            
-            <div class="form-group">
-              
-              <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-envelope"></i></span> 
-
-                <input type="email" class="form-control input-lg" name="nuevoEmail" placeholder="Ingresar email" required>
-
-              </div>
-
-            </div>
+            </div> -->
 
             <!-- ENTRADA PARA EL TELÉFONO -->
             
@@ -228,7 +221,7 @@ MODAL AGREGAR Pacientes
 
             </div>
 
-            <!-- ENTRADA PARA LA DIRECCIÓN -->
+             <!-- ENTRADA PARA LA DIRECCIÓN -->
             
             <div class="form-group">
               
@@ -242,19 +235,34 @@ MODAL AGREGAR Pacientes
 
             </div>
 
-             <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
+            <!-- ENTRADA PARA EL EMAIL -->
             
             <div class="form-group">
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                <input type="email" class="form-control input-lg" name="nuevoEmail" placeholder="Ingresar correo" required>
 
               </div>
 
             </div>
+          
+             <!-- ENTRADA PARA EDAD-->
+            
+            <div class="form-group">
+              
+              <div class="input-group">
+              
+                <span class="input-group-addon"><i class="fa fa-user"></i></span> 
+
+                <input type="text" class="form-control input-lg" name="nuevoPacientes" placeholder="Ingresar Edad" required>
+
+              </div>
+
+            </div>
+
   
           </div>
 
@@ -268,7 +276,7 @@ MODAL AGREGAR Pacientes
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary">Guardar Pacientes</button>
+          <button type="submit" class="btn btn-primary">Guardar Paciente</button>
 
         </div>
 
