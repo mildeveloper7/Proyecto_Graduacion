@@ -61,9 +61,13 @@ if($_SESSION["perfil"] == "Especial"){
            <th>Apellidos</th>
            <th>Teléfono</th>
            <th>Dirección</th>
+<<<<<<< HEAD
            <th>Correo</th> 
            <th>Edad</th>
            <th>Estado</th>
+=======
+           <th>Fecha nacimiento</th> 
+>>>>>>> a07295324b14dd793c94ff7ea34502d2947e2d1a
 
          </tr> 
 
@@ -76,9 +80,9 @@ if($_SESSION["perfil"] == "Especial"){
           $item = null;
           $valor = null;
 
-          $Pacientes = ControladorPacientes::ctrMostrarPacientes($item, $valor);
+          $Pacientess = ControladorPacientes::ctrMostrarPacientes($item, $valor);
 
-          foreach ($Pacientes as $key => $value) {
+          foreach ($Pacientess as $key => $value) {
             
 
             echo '<tr>
@@ -95,10 +99,14 @@ if($_SESSION["perfil"] == "Especial"){
 
                     <td>'.$value["Correo"].'</td>
 
+<<<<<<< HEAD
                     <td>'.$value["Edad"].'</td>             
 
                     <td>'.$value["Estado"].'</td>
 
+=======
+                    <td>'.$value["fecha_nacimiento"].'</td>      
+>>>>>>> a07295324b14dd793c94ff7ea34502d2947e2d1a
                     <td>
 
                       <div class="btn-group">

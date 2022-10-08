@@ -81,7 +81,7 @@ class ControladorPacientes{
 
 	static public function ctrMostrarPacientes($item, $valor){
 
-		$tabla = "Pacientes";
+		$tabla = "pacientes";
 
 		$respuesta = ModeloPacientes::mdlMostrarPacientes($tabla, $item, $valor);
 
