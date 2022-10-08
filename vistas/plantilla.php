@@ -140,9 +140,10 @@ CUERPO DOCUMENTO
          $_GET["ruta"] == "usuarios" ||
 
           $_GET["ruta"] == "citas" ||
-          $_GET["ruta"] == "financiero" ||
+          $_GET["ruta"] == "financiero" ||          
 
          $_GET["ruta"] == "pacientes" ||
+         $_GET["ruta"] == "examenes" ||
 
          $_GET["ruta"] == "salir"){
 

@@ -1,6 +1,6 @@
 <?php
 
-if( $_SESSION["perfil"] == "Secretaria"){
+if($_SESSION["perfil"] == "Fisioterapeuta" || $_SESSION["perfil"] == "Secretaria"){
 
   echo '<script>
 
@@ -19,7 +19,7 @@ if( $_SESSION["perfil"] == "Secretaria"){
     
     <h1>
       
-      Administrar citas
+      Administrar usuarios
     
     </h1>
 
@@ -27,7 +27,7 @@ if( $_SESSION["perfil"] == "Secretaria"){
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar citas</li>
+      <li class="active">Administrar usuarios</li>
     
     </ol>
 
@@ -39,9 +39,9 @@ if( $_SESSION["perfil"] == "Secretaria"){
 
       <div class="box-header with-border">
   
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarCita">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarUsuario">
           
-          Agregar cita
+          Agregar usuario
 
         </button>
 
@@ -56,12 +56,13 @@ if( $_SESSION["perfil"] == "Secretaria"){
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Fecha</th>
-           <th>Hora</th>
-           <th>Paciente</th>
-           <th>Fisioterapeuta</th>
+           <th>Nombre</th>
+           <th>Usuario</th>
+           <th>Foto</th>
+           <th>Perfil</th>
            <th>Estado</th>
-           <th>Observaciones</th>
+           <th>Último login</th>
+           <th>Acciones</th>
 
          </tr> 
 
@@ -74,14 +75,14 @@ if( $_SESSION["perfil"] == "Secretaria"){
         $item = null;
         $valor = null;
 
-        $citas = ControladorCitas::ctrMostrarCitas($item, $valor);
+        $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 
-       foreach ($citas as $key => $value){
+       foreach ($usuarios as $key => $value){
          
           echo ' <tr>
                   <td>'.($key+1).'</td>
-                  <td>'.$value["id_cita"].'</td>
-                  <td>'.$value["id_paciente"].'</td>' ;
+                  <td>'.$value["nombre"].'</td>
+                  <td>'.$value["usuario"].'</td>';
 
                   if($value["foto"] != ""){
 
@@ -140,7 +141,7 @@ if( $_SESSION["perfil"] == "Secretaria"){
 MODAL AGREGAR USUARIO
 ======================================-->
 
-<div id="modalAgregarCita" class="modal fade" role="dialog">
+<div id="modalAgregarUsuario" class="modal fade" role="dialog">
   
   <div class="modal-dialog">
 
@@ -266,8 +267,8 @@ MODAL AGREGAR USUARIO
 
         <?php
 
-          $crearUsuario = new ControladorCitas();
-          $crearUsuario -> ctrCrearCitas();
+          $crearUsuario = new ControladorUsuarios();
+          $crearUsuario -> ctrCrearUsuario();
 
         ?>
 
@@ -283,7 +284,7 @@ MODAL AGREGAR USUARIO
 MODAL EDITAR USUARIO
 ======================================-->
 
-<div id="modalEditarCitas" class="modal fade" role="dialog">
+<div id="modalEditarUsuario" class="modal fade" role="dialog">
   
   <div class="modal-dialog">
 
@@ -413,8 +414,8 @@ MODAL EDITAR USUARIO
 
      <?php
 
-          $editarUsuario = new ControladorCitas();
-          $editarUsuario -> ctrEditarCitas();
+          $editarUsuario = new ControladorUsuarios();
+          $editarUsuario -> ctrEditarUsuario();
 
         ?> 
 
@@ -428,8 +429,8 @@ MODAL EDITAR USUARIO
 
 <?php
 
-  $borrarUsuario = new ControladorCitas();
-  $borrarUsuario -> ctrBorrarCitas();
+  $borrarUsuario = new ControladorUsuarios();
+  $borrarUsuario -> ctrBorrarUsuario();
 
 ?> 
 

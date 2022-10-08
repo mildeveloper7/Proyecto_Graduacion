@@ -83,151 +83,72 @@ class ControladorCitas{
 	REGISTRO DE USUARIO
 	=============================================*/
 
-	static public function ctrCrearUsuario(){
+	static public function ctrCrearCitas(){
 
-		if(isset($_POST["nuevoUsuario"])){
+		if(isset($_POST["nuevoNombres"])){
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
-			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
-			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoPassword"])){
+			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombres"])  && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoApellidos"]) && 
+			   preg_match('/^[()\-0-9 ]+$/', $_POST["nuevoTelefono"]) && 
+			   preg_match('/^[#\.\-a-zA-Z0-9 ]+$/', $_POST["nuevaDireccion"]) && 
+			   preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["nuevoEmail"]) && 
+			   preg_match('/^[0-9]+$/', $_POST["nuevoEdad"])){
 
-			   	/*=============================================
-				VALIDAR IMAGEN
-				=============================================*/
+			   	$tabla = "citas";
 
-				$ruta = "";
+			   	$datos = array("nombres"=>$_POST["nuevoNombres"],
+					           "apellidos"=>$_POST["nuevoApellidos"],
+					            "telefono"=>$_POST["nuevoTelefono"],
+					           "direccion"=>$_POST["nuevaDireccion"],
+							   "correo"=>$_POST["nuevoEmail"],
+					           "edad"=>$_POST["nuevoEdad"]);
 
-				if(isset($_FILES["nuevaFoto"]["tmp_name"])){
+			   	$respuesta = ModeloCita::mdlIngresarCitas($tabla, $datos);
 
-					list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
+			   	if($respuesta == "ok"){
 
-					$nuevoAncho = 500;
-					$nuevoAlto = 500;
-
-					/*=============================================
-					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
-					=============================================*/
-
-					$directorio = "vistas/img/usuarios/".$_POST["nuevoUsuario"];
-
-					mkdir($directorio, 0755);
-
-					/*=============================================
-					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
-					=============================================*/
-
-					if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
-
-						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-						=============================================*/
-
-						$aleatorio = mt_rand(100,999);
-
-						$ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
-
-						$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);						
-
-						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
-						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
-						imagejpeg($destino, $ruta);
-
-					}
-
-					if($_FILES["nuevaFoto"]["type"] == "image/png"){
-
-						/*=============================================
-						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
-						=============================================*/
-
-						$aleatorio = mt_rand(100,999);
-
-						$ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
-
-						$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);						
-
-						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
-
-						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
-
-						imagepng($destino, $ruta);
-
-					}
-
-				}
-
-				$tabla = "usuarios";
-
-				$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-
-				$datos = array("nombre" => $_POST["nuevoNombre"],
-					           "usuario" => $_POST["nuevoUsuario"],
-					           "password" => $encriptar,
-					            "password" => $_POST["nuevoPassword"],
-					           "perfil" => $_POST["nuevoPerfil"],
-					           "foto"=>$ruta);
-
-				$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
-			
-				if($respuesta == "ok"){
-
-					echo '<script>
+					echo'<script>
 
 					swal({
+						  type: "success",
+						  title: "El Pacientes ha sido guardado correctamente",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result){
+									if (result.value) {
 
-						type: "success",
-						title: "¡El usuario ha sido guardado correctamente!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
+									window.location = "pacientes";
 
-					}).then(function(result){
-
-						if(result.value){
-						
-							window.location = "usuarios";
-
-						}
-
-					});
-				
+									}
+								})
 
 					</script>';
 
-
-				}	
-
+				}
 
 			}else{
 
-				echo '<script>
+				echo'<script>
 
 					swal({
+						  type: "error",
+						  title: "¡El Pacientes no puede ir vacío o llevar caracteres especiales!",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result){
+							if (result.value) {
 
-						type: "error",
-						title: "¡El usuario no puede ir vacío o llevar caracteres especiales!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
+							window.location = "pacientes";
 
-					}).then(function(result){
+							}
+						})
 
-						if(result.value){
-						
-							window.location = "usuarios";
+			  	</script>';
 
-						}
 
-					});
-				
-
-				</script>';
 
 			}
 
-
 		}
-
 
 	}
 
@@ -235,11 +156,11 @@ class ControladorCitas{
 	MOSTRAR USUARIO
 	=============================================*/
 
-	static public function ctrMostrarUsuarios($item, $valor){
+	static public function ctrMostrarCitas($item, $valor){
 
 		$tabla = "usuarios";
 
-		$respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
+		$respuesta = ModeloUsuarios::MdlMostrarCitas($tabla, $item, $valor);
 
 		return $respuesta;
 	}
@@ -248,7 +169,7 @@ class ControladorCitas{
 	EDITAR USUARIO
 	=============================================*/
 
-	static public function ctrEditarUsuario(){
+	static public function ctrEditarCitas(){
 
 		if(isset($_POST["editarUsuario"])){
 
@@ -429,7 +350,7 @@ class ControladorCitas{
 	BORRAR USUARIO
 	=============================================*/
 
-	static public function ctrBorrarUsuario(){
+	static public function ctrBorrarCitas(){
 
 		if(isset($_GET["idUsuario"])){
 

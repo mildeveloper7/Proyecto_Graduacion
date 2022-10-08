@@ -4,7 +4,7 @@
     
     <h1>
       
-      Administrar Pacientes
+      Administrar Examenes
     
     </h1>
 
@@ -12,7 +12,7 @@
       
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
       
-      <li class="active">Administrar Pacientess</li>
+      <li class="active">Administrar Examenes</li>
     
     </ol>
 
@@ -24,9 +24,9 @@
 
       <div class="box-header with-border">
   
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarPacientes">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarCliente">
           
-          Agregar Pacientes
+          Agregar examen
 
         </button>
 
@@ -41,15 +41,13 @@
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Nombre</th>
-           <th>Documento ID</th>
-           <th>Email</th>
-           <th>Teléfono</th>
-           <th>Dirección</th>
-           <th>Fecha nacimiento</th> 
-           <th>Total compras</th>
-           <th>Última compra</th>
-           <th>Ingreso al sistema</th>
+           <th>ID Evaluación</th>
+           <th>Paciente</th>
+           <th>Fecha</th>
+           <th>Nombre Examen</th>
+           <th>Tratamiento</th>
+           <th>Lesion</th> 
+           <th>Documento</th>
            <th>Acciones</th>
 
          </tr> 
@@ -62,23 +60,19 @@
 
             <td>1</td>
 
-            <td>Juan Villegas</td>
+            <td>853</td>
 
-            <td>8161123</td>
-
-            <td>juan@hotmail.com</td>
-
-            <td>555 57 67</td>
-
-            <td>calle 27 # 40 - 36</td>
-
-            <td>1982-15-11</td>
+            <td>Gustavo Robles</td>
 
             <td>2017-12-11 12:05:32</td>
 
-            <td>35</td>
+            <td>OTROS</td>
 
-            <td>2017-12-11 12:05:32</td>
+            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi a tempus nisi, non efficitur erat. Interdum et malesuada fames ac ante ipsum primis in faucibus.</td>
+
+            <td>Calambre</td>
+
+            <td>D-236489</td>
 
             <td>
 
@@ -108,10 +102,10 @@
 </div>
 
 <!--=====================================
-MODAL AGREGAR Pacientes
+MODAL AGREGAR EXAMEN
 ======================================-->
 
-<div id="modalAgregarPacientes" class="modal fade" role="dialog">
+<div id="modalAgregarCliente" class="modal fade" role="dialog">
   
   <div class="modal-dialog">
 
@@ -127,7 +121,7 @@ MODAL AGREGAR Pacientes
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Agregar Pacientes</h4>
+          <h4 class="modal-title">Agregar Examen</h4>
 
         </div>
 
@@ -147,7 +141,7 @@ MODAL AGREGAR Pacientes
               
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoPacientes" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" name="nuevoCliente" placeholder="ID Evaluación" required>
 
               </div>
 
@@ -159,9 +153,9 @@ MODAL AGREGAR Pacientes
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-key"></i></span> 
+                <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar documento" required>
+                <input type="text" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar Paciente" required>
 
               </div>
 
@@ -173,37 +167,24 @@ MODAL AGREGAR Pacientes
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-envelope"></i></span> 
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
 
-                <input type="email" class="form-control input-lg" name="nuevoEmail" placeholder="Ingresar email" required>
-
-              </div>
-
-            </div>
-
-            <!-- ENTRADA PARA EL TELÉFONO -->
-            
-            <div class="form-group">
-              
-              <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-phone"></i></span> 
-
-                <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
+              <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
 
               </div>
 
             </div>
 
+          
             <!-- ENTRADA PARA LA DIRECCIÓN -->
             
             <div class="form-group">
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span> 
+                <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevaDireccion" placeholder="Ingresar dirección" required>
+                <input type="text" class="form-control input-lg" name="nuevaDireccion" placeholder="Ingresar Nombre de examen" required>
 
               </div>
 
@@ -215,9 +196,9 @@ MODAL AGREGAR Pacientes
               
               <div class="input-group">
               
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+              <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+              <input type="text" class="form-control input-lg" name="nuevaDireccion" placeholder="Ingresar tratamiento" required>
 
               </div>
 
@@ -235,7 +216,7 @@ MODAL AGREGAR Pacientes
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary">Guardar Pacientes</button>
+          <button type="submit" class="btn btn-primary">Guardar examen</button>
 
         </div>
 
