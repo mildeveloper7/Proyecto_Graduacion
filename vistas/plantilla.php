@@ -138,12 +138,12 @@ CUERPO DOCUMENTO
 
       if($_GET["ruta"] == "inicio" ||
          $_GET["ruta"] == "usuarios" ||
-<<<<<<< HEAD
+
           $_GET["ruta"] == "citas" ||
           $_GET["ruta"] == "financiero" ||
-=======
+
          $_GET["ruta"] == "pacientes" ||
->>>>>>> f03cc3fe2c010cbb9519309e82394f98085e1e75
+
          $_GET["ruta"] == "salir"){
 
         include "modulos/".$_GET["ruta"].".php";
