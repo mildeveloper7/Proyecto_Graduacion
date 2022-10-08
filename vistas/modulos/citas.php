@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Fisioterapeuta"){
+if( $_SESSION["perfil"] == "Secretaria"){
 
   echo '<script>
 

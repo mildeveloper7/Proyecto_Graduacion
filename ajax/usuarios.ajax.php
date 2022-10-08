@@ -13,7 +13,7 @@ class AjaxUsuarios{
 
 	public function ajaxEditarUsuario(){
 
-		$item = "id";
+		$item = "id_usuario";
 		$valor = $this->idUsuario;
 
 		$respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
@@ -37,7 +37,7 @@ class AjaxUsuarios{
 		$item1 = "estado";
 		$valor1 = $this->activarUsuario;
 
-		$item2 = "id";
+		$item2 = "id_usuario";
 		$valor2 = $this->activarId;
 
 		$respuesta = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);

@@ -1,22 +1,22 @@
 <?php
 
-require_once "../controladores/usuarios.controlador.php";
-require_once "../modelos/usuarios.modelo.php";
+require_once "../controladores/citas.controlador.php";
+require_once "../modelos/citas.modelo.php";
 
-class AjaxUsuarios{
+class AjaxUcitas{
 
 	/*=============================================
 	EDITAR USUARIO
 	=============================================*/	
 
-	public $idUsuario;
+	public $idUcita;
 
-	public function ajaxEditarUsuario(){
+	public function ajaxEditarCita(){
 
-		$item = "id";
-		$valor = $this->idUsuario;
+		$item = "id_cita";
+		$valor = $this->idUcita;
 
-		$respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+		$respuesta = ControladorCitas::ctrMostrarCitas($item, $valor);
 
 		echo json_encode($respuesta);
 
@@ -26,21 +26,21 @@ class AjaxUsuarios{
 	ACTIVAR USUARIO
 	=============================================*/	
 
-	public $activarUsuario;
+	public $activarCita;
 	public $activarId;
 
 
-	public function ajaxActivarUsuario(){
+	public function ajaxActivarCita(){
 
-		$tabla = "usuarios";
+		$tabla = "citas";
 
 		$item1 = "estado";
-		$valor1 = $this->activarUsuario;
+		$valor1 = $this->activarCita;
 
-		$item2 = "id";
+		$item2 = "id_cita";
 		$valor2 = $this->activarId;
 
-		$respuesta = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
+		$respuesta = ModeloCitas::mdlActualizarCita($tabla, $item1, $valor1, $item2, $valor2);
 
 	}
 
@@ -48,14 +48,14 @@ class AjaxUsuarios{
 	VALIDAR NO REPETIR USUARIO
 	=============================================*/	
 
-	public $validarUsuario;
+	public $validarCita;
 
-	public function ajaxValidarUsuario(){
+	public function ajaxValidarCita(){
 
-		$item = "usuario";
-		$valor = $this->validarUsuario;
+		$item = "id_cita";
+		$valor = $this->validarCita;
 
-		$respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+		$respuesta = ControladorCitas::ctrMostrarCitas($item, $valor);
 
 		echo json_encode($respuesta);
 
@@ -65,10 +65,10 @@ class AjaxUsuarios{
 /*=============================================
 EDITAR USUARIO
 =============================================*/
-if(isset($_POST["idUsuario"])){
+if(isset($_POST["idCita"])){
 
-	$editar = new AjaxUsuarios();
-	$editar -> idUsuario = $_POST["idUsuario"];
+	$editar = new AjaxCitas();
+	$editar -> idCita = $_POST["idCita"];
 	$editar -> ajaxEditarUsuario();
 
 }
@@ -77,12 +77,12 @@ if(isset($_POST["idUsuario"])){
 ACTIVAR USUARIO
 =============================================*/	
 
-if(isset($_POST["activarUsuario"])){
+if(isset($_POST["activarCita"])){
 
-	$activarUsuario = new AjaxUsuarios();
-	$activarUsuario -> activarUsuario = $_POST["activarUsuario"];
+	$activarUsuario = new AjaxCitas();
+	$activarUsuario -> activarUsuario = $_POST["activarCita"];
 	$activarUsuario -> activarId = $_POST["activarId"];
-	$activarUsuario -> ajaxActivarUsuario();
+	$activarUsuario -> ajaxActivarCita();
 
 }
 
@@ -90,10 +90,10 @@ if(isset($_POST["activarUsuario"])){
 VALIDAR NO REPETIR USUARIO
 =============================================*/
 
-if(isset( $_POST["validarUsuario"])){
+if(isset( $_POST["validarCita"])){
 
-	$valUsuario = new AjaxUsuarios();
-	$valUsuario -> validarUsuario = $_POST["validarUsuario"];
-	$valUsuario -> ajaxValidarUsuario();
+	$valUsuario = new AjaxCitas();
+	$valUsuario -> validarCita = $_POST["validarCita"];
+	$valUsuario -> ajaxValidarCita();
 
 }
